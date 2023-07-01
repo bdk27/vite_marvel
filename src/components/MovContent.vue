@@ -1,8 +1,9 @@
 <script setup>
-    import { ref, onMounted } from 'vue';
+    import { ref, onMounted, computed } from 'vue';
     import APIconfig from '../js/authorization';
 
     const data = ref([]);
+    let posterImg = 'https://image.tmdb.org/t/p/original';
     //取得TMDB資料
     function getData() {
 
@@ -20,7 +21,7 @@
         .catch(err => console.error(err)); */
 
         async function fetchData(page) {
-            const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&sort_by=primary_release_date.desc&with_companies=420&with_keywords=marvel&page=${page}`;
+            const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=zh-TW&sort_by=primary_release_date.desc&with_companies=420&with_keywords=marvel&page=${page}`;
 
             const response = await fetch(url, options);
             const responseData = await response.json();
@@ -41,8 +42,10 @@
                 allData.push(...results);
                 currentPage ++;
             }
+            //過濾沒有圖片的項目
+            const filteredData = allData.filter(item => item.overview !== '');
 
-            return allData;
+            return filteredData;
         }
 
         fetchAllPages()
@@ -58,19 +61,38 @@
     onMounted(() => {
         getData();
     });
+    
 
     
 </script>
 
 <template>
-   <!--  {{ data }} -->
-    <ul>
-        <li v-for="item in data" :key="item.id">
-            {{ item.original_title }}
-        </li>
-    </ul>
+    <div class="container">
+        <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 g-5">
+            <div class="card-container" v-for="item in data" :key="item.id">
+                <div class="card">
+                    <img :src='posterImg + item.poster_path' :alt="item.title">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.title }}</h5>
+                        <p>{{ item.vote_average }}</p>
+                        <p>{{ item.release_date }}</p>
+                        <!-- <p class="card-text">{{ item.overview }}</p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <style lang="scss" scoped>
-
+    .card {
+        height: 100%;
+        .card-title {
+            font-size: 2rem;
+        }
+    }
+    /* .card-text {
+        width: 1.6rem;
+        
+    } */
 </style>
