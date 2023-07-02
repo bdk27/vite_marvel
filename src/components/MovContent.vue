@@ -9,5 +9,7 @@
 </template>
 
 <style lang="scss" scoped>
-   
+   * {
+    overflow-x: hidden;
+   }
 </style>
