@@ -6,7 +6,7 @@
     <section>
         <div class="hero">
             <div class="logo">
-                <h1 class="fw-bold">T.MOV</h1>
+                <h1><font-awesome-icon icon="fa-solid fa-film" class="icon"/>T.MOV</h1>
                 <!-- <img src="../assets/Marvel_Logo.svg.png" alt="Logo" width="100" class="d-inline-block align-text-midle me-3">
                 <img src="../assets/DC_Comics_logo.svg.png" alt="Logo" width="60" class="d-inline-block align-text-midle me-3">
                 <img src="../assets/Disney-logo-white-png.png" alt="Logo" width="100" class="d-inline-block align-text-midle"> -->
@@ -41,10 +41,15 @@
         h1 {
             font-family: 'Russo One', sans-serif;
             font-size: 5rem;
-            color: transparent;
-            background-image: linear-gradient(45deg, #e0c3fc, #8ec5fc);
+            color: #e0c3fc;
+           /*  background-image: linear-gradient(to right, #e0c3fc, #8ec5fc);
             -webkit-background-clip: text;
-            background-clip: text;           
+            background-clip: text; */
+            .icon {
+                color: #e0c3fc;
+                margin-right: 1rem;
+                font-size: 4.5rem;
+            }
         }
     }
 
@@ -91,7 +96,7 @@
     }
     @media (max-width: 768px) {
         section {
-            background-image: linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 0, 0, .5)), url('../assets/img/Hot-Marvel-and-DC-Comicse.jpg');
+            background-image: linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 0, 0, .1)), url('../assets/img/Hot-Marvel-and-DC-Comicse.jpg');
         }
         .logo {
             text-align: center;
@@ -104,6 +109,8 @@
             .input-group {
                 input {
                    border-radius: 0;
+                   max-width: 100%;
+                   text-align: center;
                 }
                 button {
                     margin-top: 1rem;
