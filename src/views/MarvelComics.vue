@@ -1,76 +1,34 @@
 <script setup>
     import { ref, onMounted } from 'vue';
-    import APIconfig from '../js/authorization';
-
+    import { useTMDBStore } from '../stores/tmdb';
+   
+    const tmdbStore = useTMDBStore();
     const data = ref([]);
-    let posterImg = 'https://image.tmdb.org/t/p/original';
-    //取得TMDB資料
-    function getData() {
+    const loading = ref(false);
+    const error = ref(null);
+    const posterImg = 'https://image.tmdb.org/t/p/original';
 
-        const options = {
-            method: 'GET',
-            headers: {
-                accept: 'application/json',
-                Authorization: `Bearer ${APIconfig.apiKey}`
-            }
-        };
-
-        /* fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&sort_by=primary_release_date.asc&with_companies=420&with_keywords=marvel', options)
-        .then(response => response.json())
-        .then(response => data.value = response.results)
-        .catch(err => console.error(err)); */
-
-        async function fetchData(page) {
-            const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=zh-TW&sort_by=primary_release_date.desc&with_companies=420&with_keywords=marvel&page=${page}`;
-
-            const response = await fetch(url, options);
-            const responseData = await response.json();
-
-            return responseData.results;
+    onMounted(async () => {
+        try {
+            loading.value = true;
+            await tmdbStore.fetchData();
+            data.value = tmdbStore.data;
+            console.log(data.value);
+            loading.value = false;
+        } catch (error) {
+            error.value = error.message;
+            loading.value = false;
         }
-        async function fetchAllPages() {
-            let currentPage = 1;
-            const allData = [];
-
-            while (true) {
-                const results = await fetchData(currentPage);
-
-                if (!results || results.length === 0) {
-                    break;
-                }
-
-                allData.push(...results);
-                currentPage ++;
-            }
-            //過濾沒有圖片的項目
-            const filteredData = allData.filter(item => item.overview !== '');
-
-            return filteredData;
-        }
-
-        fetchAllPages()
-            .then(results => {
-                data.value = results;
-                console.log(data.value);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }
-
-    onMounted(() => {
-        getData();
     });
-    
-
-    
 </script>
 
 <template>
     <div class="container">
         <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 g-5">
-            <div class="card-container" v-for="item in data" :key="item.id">
-                <div class="card">
+            <h1 v-if="loading">Loading...</h1>
+            <h1 v-else-if="error">Error: {{ error }}</h1>
+            <div v-else class="card-container" v-for="item in data" :key="item.id">
+                <div class="card shadow">
                     <img :src='posterImg + item.poster_path' :alt="item.title">
                     <div class="card-body">
                         <h5 class="card-title">{{ item.title }}</h5>

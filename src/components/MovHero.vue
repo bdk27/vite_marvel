@@ -7,9 +7,6 @@
         <div class="hero">
             <div class="logo">
                 <h1><font-awesome-icon icon="fa-solid fa-film" class="icon"/>T.MOV</h1>
-                <!-- <img src="../assets/Marvel_Logo.svg.png" alt="Logo" width="100" class="d-inline-block align-text-midle me-3">
-                <img src="../assets/DC_Comics_logo.svg.png" alt="Logo" width="60" class="d-inline-block align-text-midle me-3">
-                <img src="../assets/Disney-logo-white-png.png" alt="Logo" width="100" class="d-inline-block align-text-midle"> -->
             </div>
             <div class="text">
                 <h3>超級英雄電影相關資訊</h3>
@@ -93,6 +90,7 @@
     }
 
     @media (max-width: 991px) {
+
     }
     @media (max-width: 768px) {
         section {
