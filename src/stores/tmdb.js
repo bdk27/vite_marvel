@@ -37,12 +37,11 @@ export const useTMDBStore = defineStore('tmdb', {
                 //過濾沒有圖片的項目
                 const filteredData = allData.filter(item => item.overview !== '');
                 
-
                 this.data = filteredData;
-                this.loading = false;
+                /* this.loading = false; */
             } catch(error) {
                 this.error = error.message;
-                this.loading = false;
+                /* this.loading = false; */
             }
         }
     }
