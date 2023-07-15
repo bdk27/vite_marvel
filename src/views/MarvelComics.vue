@@ -7,6 +7,18 @@
     const loading = ref(true);
     const error = ref(null);
     const posterImg = 'https://image.tmdb.org/t/p/original';
+    let isChecked = ref(false);
+    let infoId = ref('');
+
+    function movieInfo(id) {
+        if(infoId.value === id) {
+            isChecked.value = !isChecked.value;
+        } else {
+            isChecked.value = false;
+            infoId.value = id;
+            isChecked.value = !isChecked.value;
+        }    
+    }
 
     onMounted(async () => {
         try {
@@ -38,15 +50,22 @@
         <div v-else class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 g-5">
             <div v-for="item in data" :key="item.id">
                 <div class="card shadow" >
-                    <img :src='posterImg + item.poster_path' :alt="item.title" style="height: 100%">
-                    <div class="card-body">
+                    <img :src='posterImg + item.poster_path' :alt="item.title">
+                    <div class="card-body d-flex justify-content-end align-items-start flex-column">
                         <h5 class="card-title">{{ item.title }}</h5>
                         <div class="progress" role="progressbar" aria-label="Example 20px high" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100" style="height: 20px">
                             <div class="progress-bar progress-bar-striped" :style="{ width: item.vote_average * 10 + '%'}" :class="[item.vote_average * 10 < 70 ? 'scoreYellow' : 'scoreGreen']">{{ item.vote_average * 10 }}%</div>
                         </div>
-                        <p>上映日期: {{ item.release_date }}</p>
-                        <!-- <p class="card-text">{{ item.overview }}</p> -->
+                        <p class="date">上映日期: {{ item.release_date }}</p>
+                        <div class="layer rounded" v-if="isChecked && infoId === item.id">
+                            <p class="card-text">{{ item.overview }}</p>
+                        </div>
                     </div>
+
+                    <button @click="movieInfo(item.id)" :class="{infoOpacity: isChecked && infoId === item.id}">
+                       <font-awesome-icon icon="fa-solid fa-circle-info" class="icon text-light"/> 
+                    </button>
+                    
                 </div>
             </div>
         </div>
@@ -56,28 +75,59 @@
 <style lang="scss" scoped>
     .card {
         height: 100%;
+        position: relative;
         .card-body {
             .card-title {
                 font-size: 2rem;
             }
             .progress {
-                margin: 1rem 0 1rem 0;
+                margin: 1rem 0 .5rem 0;
+                width: 100%;
                 .progress-bar {
                     color: #fff;
                     font-weight: bold;
-                    font-size: 1.6rem;
+                    font-size: 1.6rem; 
                 }
             }
-            p {
+            .date {
                 font-size: 1.6rem;
                 color: gray;
             }
+            .layer {
+                position: absolute;
+                height: 100%;
+                left: 0;
+                top: 0;
+                transition: .5s;
+                background: linear-gradient(rgb(0, 0, 0), rgba(0, 0, 0, .5));
+                overflow: hidden;
+                .card-text {
+                    font-size: 1.6rem;
+                    color: #fff;
+                    margin: 2rem;
+                }
+            }
+        }
+        button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: transparent;
+            border: 0;
+            .icon {
+                font-size: 2.5rem;
+            }
         }
     }
+    //評分條顏色
     .scoreGreen {
         background-color: #12ca93;
     }
     .scoreYellow {
         background-color: #9fa42b;
+    }
+    //資訊按鈕透明度
+    .infoOpacity {
+        opacity: .5;
     }
 </style>

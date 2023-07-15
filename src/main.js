@@ -9,8 +9,8 @@ import 'bootstrap'
 //fontawesome
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faFilm } from '@fortawesome/free-solid-svg-icons'
-library.add(faFilm)
+import { faFilm, faCircleInfo } from '@fortawesome/free-solid-svg-icons'
+library.add(faFilm, faCircleInfo)
 
 //pinia
 import { createPinia } from 'pinia'
