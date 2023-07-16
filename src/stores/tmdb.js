@@ -4,13 +4,13 @@ import APIconfig from '../js/authorization';
 export const useTMDBStore = defineStore('tmdb', {
     state: () => ({
         data: [],
-        loading: false,
+        /* loading: null, */
         error: null
     }),
     actions: {
-        async fetchData() {
+        async fetchData(videoType = 'movie', company = 420) {
             try {
-                this.loading = true;
+                /* this.loading = true; */
                 const options = {
                     method: 'GET',
                     headers: {
@@ -19,10 +19,10 @@ export const useTMDBStore = defineStore('tmdb', {
                     }
                 };
                 const allData = [];
-                let page = 1; 
+                let page = 1;
 
                 while(true) {
-                    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=zh-TW&sort_by=primary_release_date.desc&with_companies=420&with_keywords=marvel&page=${page}`;
+                    const url = `https://api.themoviedb.org/3/discover/${videoType}?include_adult=false&include_video=false&language=zh-TW&sort_by=primary_release_date.desc&with_companies=${company}&page=${page}`;
                     const response = await fetch(url, options);
                     const responseData = await response.json();
                     const results = responseData.results;
@@ -35,13 +35,13 @@ export const useTMDBStore = defineStore('tmdb', {
                     page ++;
                 }
                 //過濾沒有圖片的項目
-                const filteredData = allData.filter(item => item.overview !== '');
+                const filteredData = allData.filter(item => item.overview !== '' );
                 
                 this.data = filteredData;
                 /* this.loading = false; */
             } catch(error) {
                 this.error = error.message;
-                /* this.loading = false; */
+                this.loading = false;
             }
         }
     }

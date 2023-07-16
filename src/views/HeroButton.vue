@@ -1,14 +1,13 @@
 <script setup>
-    import { RouterLink } from 'vue-router';
 </script>
 
 <template>
     <section>
         <button>
-            <RouterLink to="/marvel">MarvelComics</RouterLink>
+            <router-link to="/marvel">MarvelComics</router-link>
         </button>
         <button>
-            <RouterLink to="/dc">DcComics</RouterLink>
+            <router-link to="/dc">DcComics</router-link>
         </button>
     </section>
 </template>
