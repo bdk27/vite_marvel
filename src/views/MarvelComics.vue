@@ -1,7 +1,4 @@
 <script setup>
-    /* import { useTMDBStore } from '../stores/tmdb';
-
-    const tmdbStore = useTMDBStore(); */
 </script>
 
 <template>

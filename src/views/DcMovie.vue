@@ -6,7 +6,7 @@
 </script>
 
 <template>
-  <h1>marvel-movie</h1>
+  <h1>dc-movie</h1>
   <BaseCardComponent :queryParam="route.query"></BaseCardComponent>
 </template>
 

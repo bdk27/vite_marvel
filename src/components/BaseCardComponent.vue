@@ -58,7 +58,7 @@
                     <div class="card-body d-flex justify-content-end align-items-start flex-column">
                         <h5 class="card-title">{{ item.title || item.name }}</h5>
                         <div class="progress" role="progressbar" aria-label="Example 20px high" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100" style="height: 20px">
-                            <div class="progress-bar progress-bar-striped" :style="{ width: item.vote_average * 10 + '%'}" :class="[item.vote_average * 10 < 70 ? 'scoreYellow' : 'scoreGreen']">{{ item.vote_average * 10 }}%</div>
+                            <div class="progress-bar progress-bar-striped" :style="{ width: item.vote_average * 10 + '%'}" :class="[item.vote_average * 10 < 70 ? 'scoreYellow' : 'scoreGreen']">{{ Math.floor(item.vote_average * 10) }}%</div>
                         </div>
                         <p class="date">上映日期: {{ item.release_date || item.first_air_date }}</p>
                         <div class="layer rounded" v-if="isChecked && infoId === item.id">

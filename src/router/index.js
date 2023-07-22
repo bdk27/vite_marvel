@@ -3,6 +3,8 @@ import MarvelComics from '../views/MarvelComics.vue';
 import DcComics from '../views/DcComics.vue';
 import MarvelMovie from '../views/MarvelMovie.vue';
 import MarvelTV from '../views/MarvelTV.vue';
+import DcMovie from '../views/DcMovie.vue';
+import DcTV from '../views/DcTV.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -33,19 +35,19 @@ const router = createRouter({
             path: '/dc',
             name: 'DcComics',
             component: DcComics,
-            /* children: [
+            children: [
                 {
-                    path: '',
+                    path: 'movie',
                     name: 'DcMovie',
                     component: DcMovie,
                 },
                 {
-                    path: '',
+                    path: 'tv',
                     name: 'DcTV',
                     component: DcTV,
                 },
 
-            ] */
+            ]
         }
     ]
 });
