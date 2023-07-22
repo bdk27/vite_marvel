@@ -1,5 +1,5 @@
 <script setup>
-    import { ref, onMounted, defineProps  } from 'vue';
+    import { ref, onMounted, defineProps } from 'vue';
     import { useTMDBStore } from '../stores/tmdb';
    
     const tmdbStore = useTMDBStore();
