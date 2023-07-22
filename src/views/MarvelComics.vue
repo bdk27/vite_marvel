@@ -1,16 +1,16 @@
 <script setup>
-    import { useTMDBStore } from '../stores/tmdb';
+    /* import { useTMDBStore } from '../stores/tmdb';
 
-    const tmdbStore = useTMDBStore();
+    const tmdbStore = useTMDBStore(); */
 </script>
 
 <template>
     <div class="container">
-        <button @click="tmdbStore.fetchData('movie', 420)">
-            <router-link to="/marvel/movie">電影</router-link> 
+        <button>
+            <router-link to="/marvel/movie?videoType=movie&company=420">電影</router-link> 
         </button>
-        <button @click="tmdbStore.fetchData('tv', 420)">
-            <router-link to="/marvel/tv">影集</router-link>
+        <button>
+            <router-link to="/marvel/tv?videoType=tv&company=420">影集</router-link>
         </button>
 
         <router-view></router-view>

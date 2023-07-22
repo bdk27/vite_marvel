@@ -1,5 +1,5 @@
 <script setup>
-    import { ref, onMounted, watch } from 'vue';
+    import { ref, onMounted, defineProps  } from 'vue';
     import { useTMDBStore } from '../stores/tmdb';
    
     const tmdbStore = useTMDBStore();
@@ -7,9 +7,12 @@
     const loading = ref(true);
     const error = ref(null);
     const posterImg = 'https://image.tmdb.org/t/p/original';
-
+    //影視內容
     let isChecked = ref(false);
     let infoId = ref('');
+    
+    //router的query參數
+    const props = defineProps(['queryParam']);
 
     function movieInfo(id) {
         if(infoId.value === id) {
@@ -23,21 +26,14 @@
 
     onMounted(async () => {
         try {
-            await tmdbStore.fetchData();
+            await tmdbStore.fetchData(props.queryParam.videoType, props.queryParam.company);
             data.value = tmdbStore.data;
-            /* console.log(data.value); */
+            console.log(data.value);
             loading.value = false;
         } catch (error) {
             error.value = tmdbStore.message;
             loading.value = false;
         }
-    });
-
-    watch(() => tmdbStore.data, (newData) => {
-        loading.value = true;
-        data.value = newData;
-        /* console.log(data.value); */
-        loading.value = false;
     });
 </script>
 
