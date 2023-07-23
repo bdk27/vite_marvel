@@ -1,11 +1,13 @@
 <script setup>
   import MovHero from './components/MovHero.vue'
   import MovContent from './components/MovContent.vue'
+  import MovFooter from './components/MovFooter.vue';
 </script>
 
 <template>
   <MovHero></MovHero>
   <MovContent></MovContent>
+  <MovFooter></MovFooter>
 </template>
 
 <style lang="scss">

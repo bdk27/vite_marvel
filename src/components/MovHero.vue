@@ -1,9 +1,28 @@
 <script  setup>
+    /* import { ref, watch } from 'vue';
+    import { useTMDBStore } from '../stores/tmdb';
+    import { useRoute } from 'vue-router';
 
+    const tmdbStore = useTMDBStore();
+    const bgImage = ref('');
+    const route = useRoute();
+
+
+    watch(() => route.path, (newPath) => {
+        if (newPath === '/marvel') {
+            bgImage.value = "url('../assets/img/hero-img.png')";
+        } else if (newPath === '/dc') {
+            bgImage.value = "url('../assets/img/1140474.jpg')";
+        } else {
+            // 默认的背景图片
+            bgImage.value = "url('../assets/img/hero-img.png')";
+        }
+    }); */
+   
 </script>
 
 <template>
-    <section>
+    <section id="hero-bg-img">
         <div class="hero">
             <div class="logo">
                 <h1><font-awesome-icon icon="fa-solid fa-film" class="icon"/>T.MOV</h1>
@@ -26,11 +45,11 @@
 </template>
 
 <style lang="scss" scoped>
-    section {
-        background-image: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, .1)), url('../assets/img/Hot-Marvel-and-DC-Comicse.jpg');
+    #hero-bg-img {
+        background-image: linear-gradient(to right, rgb(16, 14, 3), transparent), url('../assets/img/hero-marvel-img.png');
         background-position: center;
-        background-repeat: repeat;
-        background-size: contain;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     .logo {
@@ -93,9 +112,6 @@
 
     }
     @media (max-width: 768px) {
-        section {
-            background-image: linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 0, 0, .1)), url('../assets/img/Hot-Marvel-and-DC-Comicse.jpg');
-        }
         .logo {
             text-align: center;
             margin-top: 5rem;
