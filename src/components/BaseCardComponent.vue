@@ -41,7 +41,7 @@
     <div class="container">
         <!-- loading畫面 -->
         <div v-if="loading" class="d-flex align-items-center justify-content-center overflow-hidden">
-            <div class="spinner-border me-3 text-danger" role="status" style="width: 3rem; height: 3rem;">
+            <div class="spinner-border me-3" role="status" style="width: 3rem; height: 3rem;">
                 <span class="visually-hidden">Loading...</span>
             </div> 
             <h1>載入中...</h1>
@@ -77,6 +77,9 @@
 </template>
 
 <style lang="scss" scoped>
+    .spinner-border {
+        color: #FFAF60;
+    }
     .card {
         height: 100%;
         position: relative;

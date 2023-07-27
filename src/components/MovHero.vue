@@ -26,15 +26,16 @@
         <div class="hero">
             <div class="logo">
                 <h1><font-awesome-icon icon="fa-solid fa-film" class="icon"/>T.MOV</h1>
+                <p></p>
             </div>
             <div class="text">
                 <h3>超級英雄電影相關資訊</h3>
-                <h3>更多精彩漫威、DC電影等你來查詢</h3>
+                <h3>更多精彩漫威、DC系列等你來查詢</h3>
             </div>
             <div class="search">
                 <div class="input-group">
                     <input type="text" class="form-control bg-transparent" placeholder="尋找電影、影集" aria-label="Username" aria-describedby="basic-addon1">
-                    <button class="btn btn-primary">搜尋</button>
+                    <button type="button" class="btn">搜尋</button>
                 </div>
             </div>
             <div class="mt-3">
@@ -46,10 +47,16 @@
 
 <style lang="scss" scoped>
     #hero-bg-img {
+        position: relative;
         background-image: linear-gradient(to right, rgb(16, 14, 3), transparent), url('../assets/img/hero-marvel-img.png');
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+    }
+    .play {
+        position: absolute;
+        left: 0;
+        top: 0;
     }
 
     .logo {
@@ -57,12 +64,9 @@
         h1 {
             font-family: 'Russo One', sans-serif;
             font-size: 5rem;
-            color: #e0c3fc;
-           /*  background-image: linear-gradient(to right, #e0c3fc, #8ec5fc);
-            -webkit-background-clip: text;
-            background-clip: text; */
+            color: #FFAF60;
             .icon {
-                color: #e0c3fc;
+                color: #FFAF60;
                 margin-right: 1rem;
                 font-size: 4.5rem;
             }
@@ -90,16 +94,21 @@
                 color: #ccc;
             }
             &:focus {
-                border: 1px solid #8ec5fc;
+                border: 1px solid #FFAF60;
             }
         }
-        button {
+        .btn {
             border-radius: 0 4px 4px 0;
-            color: #fff;
+            color: #000;
             border: none;
             font-size: 1.6rem;
             padding: 1rem;
             width: 100px;
+            background: #FFAF60;
+            transform: .5s;
+            &:hover {
+                background-color: #FF8F59;
+            }
         }
     }
 

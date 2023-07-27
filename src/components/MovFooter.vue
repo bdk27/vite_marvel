@@ -19,10 +19,11 @@
         margin-top: 5.6vw;
         text-align: center;
         padding: 2rem;
+        flex-shrink: 0;
         .logo {
             h1 {
                 font-family: 'Russo One', sans-serif;
-                color: #e0c3fc;
+                color: #FFAF60;
                 .icon {
                     margin-right: 1rem;
                 }

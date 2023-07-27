@@ -5,9 +5,12 @@
 </script>
 
 <template>
-  <MovHero></MovHero>
-  <MovContent></MovContent>
-  <MovFooter></MovFooter>
+  <div class="app-container">
+    <MovHero></MovHero>
+    <MovContent></MovContent>
+    <MovFooter></MovFooter>
+  </div>
+  
 </template>
 
 <style lang="scss">
@@ -29,5 +32,12 @@
 
   section {
     padding: 5.6vw;
+  }
+
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
   }
 </style>
