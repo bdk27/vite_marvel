@@ -26,7 +26,6 @@
         <div class="hero">
             <div class="logo">
                 <h1><font-awesome-icon icon="fa-solid fa-film" class="icon"/>T.MOV</h1>
-                <p></p>
             </div>
             <div class="text">
                 <h3>超級英雄電影相關資訊</h3>
@@ -53,11 +52,6 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
-    .play {
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
 
     .logo {
         margin-bottom: 2rem;
@@ -72,7 +66,6 @@
             }
         }
     }
-
     .text {
         h3 {
             font-size: 3rem;
