@@ -28,8 +28,9 @@
                 <h1><font-awesome-icon icon="fa-solid fa-film" class="icon"/>T.MOV</h1>
             </div>
             <div class="text">
-                <h3>超級英雄電影相關資訊</h3>
-                <h3>更多精彩漫威、DC系列等你來查詢</h3>
+                <h3>超級英雄電影、影集相關資訊</h3>
+                <h3>更多精彩系列等你來查詢</h3>
+                <p>漫威、DC、二十世紀福斯、索尼</p>
             </div>
             <div class="search">
                 <div class="input-group">
@@ -37,7 +38,7 @@
                     <button type="button" class="btn">搜尋</button>
                 </div>
             </div>
-            <div class="mt-3">
+            <div class="subscribe-text mt-3">
                 <p>立即訂閱 T.MOV ,各式方案任您選擇,最高享有10%優惠</p>
             </div>
         </div>
@@ -47,7 +48,7 @@
 <style lang="scss" scoped>
     #hero-bg-img {
         position: relative;
-        background-image: linear-gradient(to right, rgb(16, 14, 3), transparent), url('../assets/img/hero-marvel-img.png');
+        background-image: linear-gradient(to right, rgb(16, 14, 3), rgba(16, 14, 3, .1)), url('../assets/img/hero-marvel-img.png');
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -70,6 +71,9 @@
         h3 {
             font-size: 3rem;
             color: #fff;
+        }
+        P {
+            padding: .5rem 0;
         }
     }
 
@@ -114,6 +118,9 @@
 
     }
     @media (max-width: 768px) {
+        #hero-bg-img {
+            background-image: linear-gradient(to bottom, rgb(16, 14, 3), rgba(16, 14, 3, .1)), url('../assets/img/hero-marvel-img.png');
+        }
         .logo {
             text-align: center;
             margin-top: 5rem;
@@ -134,6 +141,9 @@
                     border-radius: 0;
                 }
             }
+        }
+        .subscribe-text {
+            text-align: center;
         } 
 
     }

@@ -17,9 +17,9 @@
             case 'fox':
                 router.push('/fox');
                 break;
-            /* case 'sony':
+            case 'sony':
                 router.push('/sony');
-                break; */
+                break;
             default:
                 router.push('/marvel');
         }
@@ -51,9 +51,11 @@
                     </router-link>
                 </div>
                 <div class="col-6">
-                    <button href="#" class="link ">
-                        SONY<span class="fw-bold ms-2">索尼</span>
-                    </button>
+                    <router-link to="#" custom v-slot="{ navigate }">
+                        <button @click="navigate, onButtonClick('sony')" role="link" class="link sony-btn" :class="{ active: activeButton === 'sony' }" >
+                            SONY<span class="fw-bold ms-2">索尼</span>
+                        </button>
+                    </router-link>
                 </div>    
             </div>
         </div>

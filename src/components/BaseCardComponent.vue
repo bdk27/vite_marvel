@@ -53,7 +53,7 @@
         <!-- 成功畫面 -->
         <div v-else class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4 g-5">
             <div v-for="item in data" :key="item.id">
-                <div class="card shadow" >
+                <div class="card shadow">
                     <img :src='posterImg + item.poster_path' :alt="item.title">
                     <div class="card-body d-flex justify-content-end align-items-start flex-column">
                         <h5 class="card-title">{{ item.title || item.name }}</h5>

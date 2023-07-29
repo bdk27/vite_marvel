@@ -11,6 +11,10 @@ import DcTV from '../views/DC/DcTV.vue';
 import FoxComics from '../views/Fox/FoxComics.vue';
 import FoxMovie from '../views/Fox/FoxMovie.vue';
 import FoxTV from '../views/Fox/FoxTV.vue';
+//SONY
+import SonyComics from '../views/Sony/SonyComics.vue';
+import SonyMovie from '../views/Sony/SonyMovie.vue';
+import SonyTV from '../views/Sony/SonyTV.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -69,6 +73,24 @@ const router = createRouter({
                     path: 'tv',
                     name: 'FoxTV',
                     component: FoxTV,
+                },
+
+            ]
+        },
+        {
+            path: '/sony',
+            name: 'SonyComics',
+            component: SonyComics,
+            children: [
+                {
+                    path: 'movie',
+                    name: 'SonyMovie',
+                    component: SonyMovie,
+                },
+                {
+                    path: 'tv',
+                    name: 'SonyTV',
+                    component: SonyTV,
                 },
 
             ]
