@@ -67,9 +67,8 @@
                     </div>
 
                     <button @click="movieInfo(item.id)" :class="{infoOpacity: isChecked && infoId === item.id}">
-                       <font-awesome-icon icon="fa-solid fa-circle-info" class="icon text-light"/> 
+                    <font-awesome-icon icon="fa-solid fa-circle-info" class="icon text-light"/> 
                     </button>
-                    
                 </div>
             </div>
         </div>

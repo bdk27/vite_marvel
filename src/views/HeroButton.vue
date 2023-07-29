@@ -2,7 +2,7 @@
     import { ref } from 'vue';
     import { useRouter } from 'vue-router';
 
-    const activeButton = ref('marvel');
+    const activeButton = ref(null);
     const router = useRouter();
 
     function onButtonClick(buttonType) {
@@ -14,10 +14,10 @@
             case 'dc':
                 router.push('/dc');
                 break;
-            /* case 'fox':
+            case 'fox':
                 router.push('/fox');
                 break;
-            case 'sony':
+            /* case 'sony':
                 router.push('/sony');
                 break; */
             default:
@@ -44,9 +44,11 @@
                     </router-link>
                 </div>
                 <div class="col-6">
-                    <button href="#" class="link ">
-                        FOX<span class="fw-bold ms-2">福斯</span>
-                    </button>
+                    <router-link to="#" custom v-slot="{ navigate }">
+                        <button @click="navigate, onButtonClick('fox')" role="link" class="link fox-btn" :class="{ active: activeButton === 'fox' }" >
+                            FOX<span class="fw-bold ms-2">福斯</span>
+                        </button>
+                    </router-link>
                 </div>
                 <div class="col-6">
                     <button href="#" class="link ">
@@ -58,7 +60,7 @@
 </template>
 
 <style lang="scss" scoped>
-    @import url(../scss/button.scss);
+    @import url(../scss/_button.scss);
 
     .container {
         padding-top: 5.6vw ;
