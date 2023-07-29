@@ -4,7 +4,8 @@ import APIconfig from '../js/authorization';
 export const useTMDBStore = defineStore('tmdb', {
     state: () => ({
         data: [],
-        foxMovieIds: ['340102','567604','383498'],
+        foxMovieIds: ['340102','567604','383498','9480','9947','9738','1979','166424'],
+        marvelMovieIds: ['36647','36586','1927','7220','36648','13056','71676'],
         options: {
             method: 'GET',
             headers: {
@@ -15,20 +16,22 @@ export const useTMDBStore = defineStore('tmdb', {
         error: null
     }),
     actions: {
-        async fetchData(videoType, company, keywords, without_keywords) {
+        async fetchData(videoType, company, foxMovieIds = this.foxMovieIds, marvelMovieIds = this.marvelMovieIds) {
             try {
-                console.log(company);
-                /* if(company === '431,25') {
-                    await this.fetchMovieIds(movieIds);
-                    console.log(this.data);
-                } */
+                //查詢單一電影id
+                if(company === '431,25') {
+                    await this.fetchMovieIds(foxMovieIds);
+                }else if(company === '420') {
+                    await this.fetchMovieIds(marvelMovieIds);
+                    console.log('hi', this.data);
+                }
 
                 const allData = [];
                 let page = 1;
                 
                 //搜尋多頁面
                 while(true) {
-                    const url = `https://api.themoviedb.org/3/discover/${videoType}?language=zh-TW&sort_by=primary_release_date.desc&with_companies=${company}&with_keywords=${keywords}&without_keywords=${without_keywords}&page=${page}`;
+                    const url = `https://api.themoviedb.org/3/discover/${videoType}?language=zh-TW&sort_by=primary_release_date.desc&with_companies=${company}&page=${page}`;
                     const response = await fetch(url, this.options);
                     const responseData = await response.json();
                     const results = responseData.results;
@@ -43,13 +46,28 @@ export const useTMDBStore = defineStore('tmdb', {
                 //過濾沒有圖片的項目
                 const filteredData = allData.filter(item => item.overview !== '');
 
-                if(company === '420|7505|38679|13252' && videoType === 'tv') {
-                    const test = filteredData.filter(item => item.id !== 67195 && item.id !== 69629);
-                    this.data = test;
-                }else {
-                    this.data = filteredData;
+                //調整電影、影集
+                if(videoType === 'movie') {
+                    if(company === '420') {
+                        const deleteMovie = filteredData.filter(item => item.id !== 559 && item.id !== 1979);
+                        const marvelMovie = [...this.data, ...deleteMovie];
+                        marvelMovie.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
+                        this.data = marvelMovie;
+                    }else if(company === '431,25') {
+                        const foxMovie = [...this.data, ...filteredData];
+                        foxMovie.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
+                        this.data = foxMovie;
+                    }else {
+                        this.data = filteredData;
+                    }
+                }else if(videoType === 'tv') {
+                    if(company === '420|7505|38679|13252') {
+                        const marvelTV = filteredData.filter(item => item.id !== 67195 && item.id !== 69629);
+                        this.data = marvelTV;
+                    }else {
+                        this.data = filteredData;
+                    }
                 }
-                
                 
             } catch(error) {
                 this.error = error.message;
