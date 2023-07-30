@@ -16,12 +16,24 @@
                 </router-link>
             </div>
         </div>
+
+        <div class="intro">
+            <div class="intro-logo">
+               <img src="../../assets/img/DC_Comics_logo.png" alt="dc-logo"> 
+            </div>
+            <div class="intro-content">
+                <p>DC41漫畫公司是一家美國漫畫書出版社，它是隸屬於華納兄弟探索旗下DC娛樂的出版事業單位</p>
+                <a href="https://zh.wikipedia.org/zh-tw/DC%E6%BC%AB%E7%95%AB">#維基百科</a>
+            </div>
+        </div>
+
         <router-view></router-view>
     </div>
 </template>
 
 <style lang="scss" scoped>
-    @import url(../../scss/_button.scss);
+    @import '../../scss/_button.scss';
+    @import '../../scss/_intro.scss';
 
     .link {
         font-weight: bold;

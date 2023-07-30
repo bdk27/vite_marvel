@@ -1,0 +1,22 @@
+.intro {
+    .intro-logo {
+        text-align: center;
+        margin-top: 5rem;
+        img {
+            max-width: 300px;
+        }
+    }
+    .intro-content {
+        margin-top: 2rem;
+        text-align: center;
+        p {
+            font-size: 2rem;
+            padding: 1rem 0;
+        }
+        a {
+            text-align: center;
+            font-size: 1.8rem;
+        }
+    }
+}
+

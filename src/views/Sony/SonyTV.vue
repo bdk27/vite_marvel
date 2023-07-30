@@ -7,8 +7,8 @@
 
 <template>
   <h3 class="title">熱門影集</h3>
-  <h1>查無相關資料</h1>
   <BaseCardComponent :queryParam="route.query"></BaseCardComponent>
+  <h1>查無相關資料</h1>
 </template>
 
 <style lang="scss" scoped>
