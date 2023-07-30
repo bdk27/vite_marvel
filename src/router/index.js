@@ -17,7 +17,7 @@ import SonyMovie from '../views/Sony/SonyMovie.vue';
 import SonyTV from '../views/Sony/SonyTV.vue';
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes: [
         {
             path: '/',
