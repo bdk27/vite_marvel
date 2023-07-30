@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 //Marvel
 import MarvelComics from '../views/Marvel/MarvelComics.vue';
 import MarvelMovie from '../views/Marvel/MarvelMovie.vue';
