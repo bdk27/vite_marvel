@@ -30,12 +30,11 @@
             <div class="text">
                 <h3>超級英雄電影、影集相關資訊</h3>
                 <h3>更多精彩系列等你來查詢</h3>
-                <p>漫威、DC、二十世紀福斯、索尼</p>
             </div>
             <div class="search">
                 <div class="input-group">
-                    <input type="text" class="form-control bg-transparent" placeholder="尋找電影、影集" aria-label="Username" aria-describedby="basic-addon1">
-                    <button type="button" class="btn">搜尋</button>
+                    <input type="text" class="form-control bg-transparent" placeholder="電子郵件地址" aria-label="Username" aria-describedby="basic-addon1">
+                    <button type="button" class="btn">繼續</button>
                 </div>
             </div>
             <div class="subscribe-text mt-3">
@@ -48,7 +47,7 @@
 <style lang="scss" scoped>
     #hero-bg-img {
         position: relative;
-        background-image: linear-gradient(to right, rgb(16, 14, 3), rgba(16, 14, 3, .1)), url('../assets/img/hero-marvel-img.png');
+        background-image: linear-gradient(to right, rgb(16, 14, 3), rgba(16, 14, 3, .1)), url('../assets/img/hero-lg-img.jpg');
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -80,15 +79,16 @@
     .search {
         margin-top: 5rem;
         input {
+            box-shadow: none;
             max-width: 500px;
             padding: 1rem;
             font-size: 1.8rem;
             color: #fff;
-            border: 1px solid #31343e;
+            border: 1px solid #7b7b7b;
             border-radius: 4px 0 0 4px;
-            color: silver;
+            color: #fff;
             &::placeholder {
-                color: #ccc;
+                color: silver;
             }
             &:focus {
                 border: 1px solid #FFAF60;
@@ -119,7 +119,7 @@
     }
     @media (max-width: 768px) {
         #hero-bg-img {
-            background-image: linear-gradient(to bottom, rgb(16, 14, 3), rgba(16, 14, 3, .1)), url('../assets/img/hero-marvel-img.png');
+            background-image: linear-gradient(to bottom, rgb(16, 14, 3), rgba(16, 14, 3, .1)), url('../assets/img/hero-md-img.png');
         }
         .logo {
             text-align: center;
