@@ -69,7 +69,7 @@ export const useTMDBStore = defineStore('tmdb', {
                     }
                 }else if(videoType === 'tv') {
                     if(company === '420|7505|38679|13252') {
-                        const marvelTV = filteredData.filter(item => item.id !== 67195 && item.id !== 69629);
+                        const marvelTV = filteredData.filter(item => item.id !== 67195 && item.id !== 69629 && item.id !== 202555);
                         this.data = marvelTV;
                     }else {
                         this.data = filteredData;
